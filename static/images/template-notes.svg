@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">模板笔记</title>
+  <desc id="desc">几张模板笔记和代码片段的示意图。</desc>
+  <rect width="1200" height="720" fill="#111827"/>
+  <rect x="92" y="86" width="430" height="548" rx="8" fill="#f8f8f6"/>
+  <rect x="612" y="118" width="496" height="420" rx="8" fill="#1f2937" stroke="#374151"/>
+  <path d="M140 150h244M140 196h316M140 242h214" stroke="#4b5563" stroke-width="12" stroke-linecap="round" opacity=".45"/>
+  <path d="M140 332h310M140 378h246M140 424h286M140 470h190" stroke="#2563eb" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+  <path d="M662 180h180M662 226h346M662 272h260M662 318h376M662 364h214M662 410h312" stroke="#d1d5db" stroke-width="10" stroke-linecap="round" opacity=".78"/>
+  <path d="M662 470h158" stroke="#f59e0b" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="1034" cy="174" r="18" fill="#60a5fa"/>
+  <circle cx="986" cy="174" r="18" fill="#34d399"/>
+  <circle cx="938" cy="174" r="18" fill="#f97316"/>
+</svg>

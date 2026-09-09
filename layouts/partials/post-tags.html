@@ -1,0 +1,7 @@
+{{ with .GetTerms "tags" }}
+  <div class="meta-row">
+    {{ range . }}
+      <a class="meta-link" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>
+    {{ end }}
+  </div>
+{{ end }}

@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="site-container footer-inner">
+    <p>© {{ now.Format "2006" }} {{ site.Params.siteName | default site.Title }}</p>
+    <div class="footer-links">
+      <a href="{{ "/index.xml" | relURL }}">RSS</a>
+      <a href="{{ "/archives/" | relURL }}">归档</a>
+      <a href="{{ "/series/" | relURL }}">系列</a>
+    </div>
+  </div>
+</footer>

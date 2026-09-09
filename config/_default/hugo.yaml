@@ -1,0 +1,35 @@
+baseURL: "https://causalityn.site/"
+locale: "zh-cn"
+defaultContentLanguage: "zh-cn"
+title: "The Forgotten Land"
+hasCJKLanguage: true
+enableRobotsTXT: true
+summaryLength: 90
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+  series: "series"
+
+pagination:
+  pagerSize: 8
+
+markup:
+  highlight:
+    noClasses: false
+    lineNos: true
+    lineNumbersInTable: true
+    tabWidth: 2
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+    ordered: false
+
+params:
+  siteName: "The Forgotten Land"
+  intro: "我忘记了所有悲剧，所见皆是奇迹。"
+  homeRecentPosts: 8
+  defaultTheme: "system"
+  defaultToc: true
+  defaultComments: false
+  description: "从前种种，譬如昨日死；从后种种，譬如今日生"

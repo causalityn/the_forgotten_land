@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <header class="page-head">
+    <div class="site-container">
+      <h1 class="page-title">系列</h1>
+      <p class="page-description">有顺序的文章集合，像一条从某个问题出发的路径。</p>
+    </div>
+  </header>
+  <div class="site-container">
+    <div class="taxonomy-list">
+      {{ range .Data.Terms.ByCount }}
+        {{ $visiblePages := where .Pages "Params.hidden" "ne" true }}
+        {{ if gt (len $visiblePages) 0 }}
+          {{ $term := .Page.Data.Term }}
+          {{ $meta := index hugo.Data.series $term }}
+          <a class="taxonomy-row" href="{{ .Page.RelPermalink }}">
+            <span>
+              <span class="taxonomy-title">{{ if $meta }}{{ $meta.title }}{{ else }}{{ .Page.LinkTitle }}{{ end }}</span>
+              {{ if $meta }}<span class="post-summary">{{ $meta.description }}</span>{{ end }}
+            </span>
+            <span class="taxonomy-count">{{ len $visiblePages }} 篇</span>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

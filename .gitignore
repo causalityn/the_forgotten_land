@@ -1,0 +1,9 @@
+# ai-agent
+.agents/
+
+node_modules/
+.pnpm-store/
+resources/_gen/
+public/
+static/css/main.css
+.hugo_build.lock

@@ -1,0 +1,249 @@
+.prose-content {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.86;
+}
+
+.prose-content > *:first-child {
+  margin-top: 0;
+}
+
+.prose-content p,
+.prose-content ul,
+.prose-content ol,
+.prose-content blockquote,
+.prose-content pre,
+.prose-content table,
+.prose-content figure {
+  margin: 1.28em 0;
+}
+
+.prose-content ul,
+.prose-content ol {
+  padding-left: 1.55em;
+}
+
+.prose-content ul {
+  list-style: disc;
+}
+
+.prose-content ol {
+  list-style: decimal;
+}
+
+.prose-content li + li {
+  margin-top: 0.36em;
+}
+
+.prose-content li > ul,
+.prose-content li > ol {
+  margin: 0.5em 0;
+}
+
+.prose-content h2,
+.prose-content h3,
+.prose-content h4 {
+  scroll-margin-top: 96px;
+  line-height: 1.35;
+}
+
+.prose-content h2 {
+  margin: 2.45em 0 0.85em;
+  padding-top: 0.2em;
+  font-size: 1.78rem;
+}
+
+.prose-content h3 {
+  margin: 2em 0 0.75em;
+  font-size: 1.34rem;
+}
+
+.prose-content h4 {
+  margin: 1.7em 0 0.65em;
+  font-size: 1.12rem;
+}
+
+.prose-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.prose-content blockquote {
+  margin: 1em 0;
+  padding: 0.08em 0 0.08em 1em;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+}
+
+.prose-content blockquote > :first-child {
+  margin-top: 0;
+}
+
+.prose-content blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.prose-content code {
+  padding: 0.12em 0.34em;
+  border-radius: 5px;
+  background: var(--code-bg);
+  font-size: 0.9em;
+}
+
+.prose-content pre {
+  overflow: auto;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--code-bg);
+  line-height: 1.65;
+}
+
+.prose-content pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.prose-content .highlight {
+  margin: 1.28em 0;
+}
+
+.prose-content .highlight pre {
+  margin: 0;
+}
+
+.prose-content .highlight table,
+.prose-content .highlight tbody,
+.prose-content .highlight tr,
+.prose-content .highlight td {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.prose-content .highlight table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose-content .highlight .lntd:first-child {
+  width: 1%;
+  user-select: none;
+}
+
+.prose-content .chroma {
+  color: var(--text);
+  background: var(--code-bg);
+}
+
+.prose-content .chroma .lnt,
+.prose-content .chroma .ln {
+  display: block;
+  min-width: 1.65em;
+  padding-right: 0.65em;
+  color: var(--faint);
+  text-align: right;
+}
+
+.prose-content .chroma .line {
+  display: block;
+  min-height: 1.65em;
+}
+
+.prose-content .chroma .hl {
+  display: block;
+  background: var(--accent-soft);
+}
+
+.prose-content .chroma .k,
+.prose-content .chroma .kc,
+.prose-content .chroma .kd,
+.prose-content .chroma .kn,
+.prose-content .chroma .kp,
+.prose-content .chroma .kr,
+.prose-content .chroma .kt {
+  color: #7c3aed;
+}
+
+.dark .prose-content .chroma .k,
+.dark .prose-content .chroma .kc,
+.dark .prose-content .chroma .kd,
+.dark .prose-content .chroma .kn,
+.dark .prose-content .chroma .kp,
+.dark .prose-content .chroma .kr,
+.dark .prose-content .chroma .kt {
+  color: #c4b5fd;
+}
+
+.prose-content .chroma .s,
+.prose-content .chroma .s1,
+.prose-content .chroma .s2,
+.prose-content .chroma .sa,
+.prose-content .chroma .sb,
+.prose-content .chroma .sc,
+.prose-content .chroma .dl {
+  color: var(--green);
+}
+
+.prose-content .chroma .m,
+.prose-content .chroma .mb,
+.prose-content .chroma .mf,
+.prose-content .chroma .mh,
+.prose-content .chroma .mi,
+.prose-content .chroma .il {
+  color: var(--orange);
+}
+
+.prose-content .chroma .c,
+.prose-content .chroma .c1,
+.prose-content .chroma .cm,
+.prose-content .chroma .cp,
+.prose-content .chroma .cs {
+  color: var(--faint);
+  font-style: italic;
+}
+
+.prose-content .chroma .nf,
+.prose-content .chroma .na,
+.prose-content .chroma .nb,
+.prose-content .chroma .nx {
+  color: var(--accent);
+}
+
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose-content th,
+.prose-content td {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+}
+
+.prose-content th {
+  background: var(--surface);
+  text-align: left;
+}
+
+.prose-content hr {
+  margin: 2.4em 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.prose-content img {
+  margin: 1.6em auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.prose-content figcaption,
+.prose-content em {
+  color: var(--muted);
+}

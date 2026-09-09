@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <header class="page-head">
+    <div class="site-container">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+    </div>
+  </header>
+  <div class="site-container">
+    {{ $pages := where .Pages "Params.hidden" "ne" true }}
+    {{ $paginator := .Paginate ($pages.ByDate.Reverse) }}
+    <div class="post-list">
+      {{ range $paginator.Pages }}
+        {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
+  </div>
+{{ end }}

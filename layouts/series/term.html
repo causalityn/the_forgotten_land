@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{ $seriesKey := .Data.Term }}
+  {{ $seriesMeta := index hugo.Data.series $seriesKey }}
+  <header class="page-head">
+    <div class="site-container">
+      <p class="eyebrow">系列</p>
+      <h1 class="page-title">{{ if $seriesMeta }}{{ $seriesMeta.title }}{{ else }}{{ .Title }}{{ end }}</h1>
+      {{ if $seriesMeta }}
+        <p class="page-description">{{ $seriesMeta.description }}</p>
+      {{ else }}
+        {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+      {{ end }}
+    </div>
+  </header>
+  <div class="site-container">
+    {{ $pages := where .Pages "Params.hidden" "ne" true }}
+    {{ $pages = sort $pages "Params.series_order" "asc" }}
+    {{ $paginator := .Paginate $pages }}
+    <div class="post-list">
+      {{ range $paginator.Pages }}
+        {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
+  </div>
+{{ end }}

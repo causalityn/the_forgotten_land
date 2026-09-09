@@ -1,0 +1,25 @@
+{{ define "main" }}
+  {{ $recentCount := site.Params.homeRecentPosts | default 8 }}
+  <section class="home-hero">
+    <div class="site-container">
+      <p class="eyebrow">causalityn's</p>
+      <h1 class="home-title">{{ site.Params.siteName | default site.Title }}</h1>
+      <p class="home-intro">{{ site.Params.intro }}</p>
+    </div>
+  </section>
+  <section class="section-block">
+    <div class="site-container">
+      <div class="section-heading">
+        <h2>最近文章</h2>
+        <a class="section-link" href="{{ "/posts/" | relURL }}">更多文章 →</a>
+      </div>
+      {{ $posts := where site.RegularPages "Type" "posts" }}
+      {{ $posts = where $posts "Params.hidden" "ne" true }}
+      <div class="post-list">
+        {{ range first $recentCount ($posts.ByDate.Reverse) }}
+          {{ partial "post-card.html" . }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

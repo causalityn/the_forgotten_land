@@ -1,0 +1,38 @@
+{{ $prev := false }}
+{{ $next := false }}
+{{ with .GetTerms "series" }}
+  {{ $seriesTerm := index . 0 }}
+  {{ $seriesPages := $seriesTerm.Pages }}
+  {{ $seriesPages = where $seriesPages "Params.hidden" "ne" true }}
+  {{ $seriesPages = sort $seriesPages "Params.series_order" "asc" }}
+  {{ range $index, $page := $seriesPages }}
+    {{ if eq $page.RelPermalink $.RelPermalink }}
+      {{ if gt $index 0 }}{{ $prev = index $seriesPages (sub $index 1) }}{{ end }}
+      {{ if lt (add $index 1) (len $seriesPages) }}{{ $next = index $seriesPages (add $index 1) }}{{ end }}
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ $prev = .PrevInSection }}
+  {{ $next = .NextInSection }}
+{{ end }}
+
+{{ if or $prev $next }}
+  <nav class="article-pager" aria-label="上一篇和下一篇">
+    {{ if $prev }}
+      <a href="{{ $prev.RelPermalink }}">
+        <span class="pager-label">上一篇</span>
+        <span class="pager-title">{{ $prev.Title }}</span>
+      </a>
+    {{ else }}
+      <span></span>
+    {{ end }}
+    {{ if $next }}
+      <a href="{{ $next.RelPermalink }}">
+        <span class="pager-label">下一篇</span>
+        <span class="pager-title">{{ $next.Title }}</span>
+      </a>
+    {{ else }}
+      <span></span>
+    {{ end }}
+  </nav>
+{{ end }}

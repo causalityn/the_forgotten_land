@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $title := site.Title }}
+{{ if not .IsHome }}
+  {{ $title = printf "%s | %s" .Title site.Title }}
+{{ end }}
+<title>{{ $title }}</title>
+{{ $description := site.Params.description }}
+{{ with .Description }}
+  {{ $description = . }}
+{{ else }}
+  {{ with .Summary }}{{ $description = . | plainify }}{{ end }}
+{{ end }}
+<meta name="description" content="{{ $description }}">
+<meta name="color-scheme" content="light dark">
+<script>
+  (function () {
+    var theme = localStorage.getItem("theme") || "{{ site.Params.defaultTheme | default "system" }}";
+    var dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", dark);
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>
+<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+{{ with .OutputFormats.Get "RSS" }}
+  <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">
+{{ end }}

@@ -1,0 +1,34 @@
+{{ define "main" }}
+  {{ $showToc := site.Params.defaultToc }}
+  {{ if isset .Params "toc" }}{{ $showToc = .Params.toc }}{{ end }}
+  <div class="reading-container article-layout">
+    <article>
+      <header class="article-header">
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ with .Params.description }}<p class="post-description">{{ . }}</p>{{ end }}
+        {{ partial "post-meta.html" . }}
+        {{ partial "post-tags.html" . }}
+      </header>
+      {{ if .GetTerms "series" }}
+        <div class="mobile-series">
+          {{ partial "series-list.html" . }}
+        </div>
+      {{ end }}
+      <div class="prose-content">
+        {{ .Content }}
+      </div>
+      {{ partial "article-pager.html" . }}
+    </article>
+    {{ if or $showToc (.GetTerms "series") }}
+      <aside class="article-sidebar" data-toc-panel>
+        {{ if and $showToc .TableOfContents }}
+          <section class="sidebar-section toc">
+            <h2 class="sidebar-title">目录</h2>
+            {{ .TableOfContents }}
+          </section>
+        {{ end }}
+        {{ partial "series-list.html" . }}
+      </aside>
+    {{ end }}
+  </div>
+{{ end }}

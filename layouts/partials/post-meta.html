@@ -1,0 +1,18 @@
+<div class="meta-row">
+  {{ with .Date }}
+    <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+  {{ end }}
+  <span>{{ .ReadingTime }} 分钟阅读</span>
+  {{ range .GetTerms "categories" }}
+    <a class="meta-link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  {{ end }}
+  {{ with .GetTerms "series" }}
+    {{ range first 1 . }}
+      {{ $seriesKey := .Data.Term }}
+      {{ $seriesMeta := index hugo.Data.series $seriesKey }}
+        <a class="series-link" href="{{ .RelPermalink }}">
+          {{ if $seriesMeta }}{{ $seriesMeta.title }}{{ else }}{{ .LinkTitle }}{{ end }}
+        </a>
+    {{ end }}
+  {{ end }}
+</div>

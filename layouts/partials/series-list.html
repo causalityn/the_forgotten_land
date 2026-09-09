@@ -1,0 +1,20 @@
+{{ with .GetTerms "series" }}
+  {{ $seriesTerm := index . 0 }}
+  {{ $seriesKey := $seriesTerm.Data.Term }}
+  {{ $seriesMeta := index hugo.Data.series $seriesKey }}
+  {{ $seriesPages := $seriesTerm.Pages }}
+  {{ $seriesPages = where $seriesPages "Params.hidden" "ne" true }}
+  {{ $seriesPages = sort $seriesPages "Params.series_order" "asc" }}
+  <section class="sidebar-section series-sidebar">
+    <h2 class="sidebar-title">{{ if $seriesMeta }}{{ $seriesMeta.title }}{{ else }}本系列文章{{ end }}</h2>
+    <ol class="series-nav-list">
+      {{ range $seriesPages }}
+        <li class="{{ if eq .RelPermalink $.RelPermalink }}is-current{{ end }}">
+          <a href="{{ .RelPermalink }}">
+            <span class="order">{{ with .Params.series_order }}{{ printf "%02d" . }}{{ else }}--{{ end }}</span>{{ .Title }}
+          </a>
+        </li>
+      {{ end }}
+    </ol>
+  </section>
+{{ end }}

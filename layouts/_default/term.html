@@ -1,0 +1,27 @@
+{{ define "main" }}
+  {{ $isSeries := eq .Data.Singular "series" }}
+  {{ $seriesMeta := false }}
+  {{ if $isSeries }}{{ $seriesMeta = index hugo.Data.series .Data.Term }}{{ end }}
+  <header class="page-head">
+    <div class="site-container">
+      <p class="eyebrow">{{ if $isSeries }}系列{{ else }}{{ .Data.Singular }}{{ end }}</p>
+      <h1 class="page-title">{{ if $seriesMeta }}{{ $seriesMeta.title }}{{ else }}{{ .Title }}{{ end }}</h1>
+      {{ if $seriesMeta }}
+        <p class="page-description">{{ $seriesMeta.description }}</p>
+      {{ else }}
+        {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+      {{ end }}
+    </div>
+  </header>
+  <div class="site-container">
+    {{ $pages := where .Pages "Params.hidden" "ne" true }}
+    {{ if $isSeries }}{{ $pages = sort $pages "Params.series_order" "asc" }}{{ else }}{{ $pages = $pages.ByDate.Reverse }}{{ end }}
+    {{ $paginator := .Paginate $pages }}
+    <div class="post-list">
+      {{ range $paginator.Pages }}
+        {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
+  </div>
+{{ end }}

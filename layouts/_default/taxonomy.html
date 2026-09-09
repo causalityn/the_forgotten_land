@@ -1,0 +1,44 @@
+{{ define "main" }}
+  <header class="page-head">
+    <div class="site-container">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+    </div>
+  </header>
+  <div class="site-container">
+    <div class="taxonomy-list">
+      {{ if eq .Data.Plural "series" }}
+        {{ range .Data.Terms.ByCount }}
+          {{ $visiblePages := where .Pages "Params.hidden" "ne" true }}
+          {{ if gt (len $visiblePages) 0 }}
+          {{ $term := .Page.Data.Term }}
+          {{ $meta := index hugo.Data.series $term }}
+          {{ $title := .Page.LinkTitle }}
+          {{ $description := "" }}
+          {{ if $meta }}
+            {{ $title = $meta.title }}
+            {{ $description = $meta.description }}
+          {{ end }}
+          <a class="taxonomy-row" href="{{ .Page.RelPermalink }}">
+            <span>
+              <span class="taxonomy-title">{{ $title }}</span>
+              {{ with $description }}<span class="post-summary">{{ . }}</span>{{ end }}
+            </span>
+            <span class="taxonomy-count">{{ len $visiblePages }} 篇</span>
+          </a>
+          {{ end }}
+        {{ end }}
+      {{ else }}
+        {{ range .Data.Terms.ByCount }}
+          {{ $visiblePages := where .Pages "Params.hidden" "ne" true }}
+          {{ if gt (len $visiblePages) 0 }}
+          <a class="taxonomy-row" href="{{ .Page.RelPermalink }}">
+            <span class="taxonomy-title">{{ .Page.Title }}</span>
+            <span class="taxonomy-count">{{ len $visiblePages }} 篇</span>
+          </a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

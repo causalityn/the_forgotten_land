@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "zh-cn" }}" data-theme="{{ site.Params.defaultTheme | default "system" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <div class="site-shell">
+      {{ partial "header.html" . }}
+      <main class="site-main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    {{ partial "tool-dock.html" . }}
+    <script src="{{ "js/main.js" | relURL }}" defer></script>
+  </body>
+</html>
