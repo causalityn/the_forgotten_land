@@ -4,13 +4,13 @@
     <nav class="site-nav" aria-label="主导航">
       <a href="{{ "/" | relURL }}">首页</a>
       <div class="nav-group">
-        <button class="nav-trigger" type="button" aria-haspopup="true">文章</button>
-        <div class="nav-menu" role="menu">
-          <a href="{{ "/posts/" | relURL }}" role="menuitem">全部文章</a>
-          <a href="{{ "/series/" | relURL }}" role="menuitem">系列</a>
-          <a href="{{ "/categories/" | relURL }}" role="menuitem">分类</a>
-          <a href="{{ "/tags/" | relURL }}" role="menuitem">标签</a>
-          <a href="{{ "/archives/" | relURL }}" role="menuitem">归档</a>
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="articles-menu">文章</button>
+        <div id="articles-menu" class="nav-menu">
+          <a href="{{ "/posts/" | relURL }}">全部文章</a>
+          <a href="{{ "/series/" | relURL }}">系列</a>
+          <a href="{{ "/categories/" | relURL }}">分类</a>
+          <a href="{{ "/tags/" | relURL }}">标签</a>
+          <a href="{{ "/archives/" | relURL }}">归档</a>
         </div>
       </div>
       <a href="{{ "/about/" | relURL }}">关于</a>

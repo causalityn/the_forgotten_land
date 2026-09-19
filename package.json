@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:fonts": "node scripts/build-lxgw-fonts.mjs",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./static/css/main.css --watch",
-    "build": "npm run build:css && hugo",
+    "build": "npm run build:fonts && npm run build:css && hugo",
     "dev": "hugo server --disableFastRender"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.0",
     "@tailwindcss/typography": "^0.5.15",
+    "lxgw-wenkai-webfont": "1.7.0",
+    "subset-font": "2.7.0",
     "tailwindcss": "^4.0.0"
   }
 }
