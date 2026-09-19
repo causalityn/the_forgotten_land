@@ -14,6 +14,14 @@
 npm install
 ```
 
+## 字体
+
+站点默认使用霞鹜文楷。当前文章文本会生成到 `static/fonts/lxgw-wenkai/`，未覆盖字符由固定版本的 jsDelivr 字体补充，最后回退到系统中文字体。新增或修改大量文章后运行：
+
+```bash
+npm run build:fonts
+```
+
 ## 本地开发
 
 开发时建议开两个终端。

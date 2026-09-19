@@ -13,14 +13,29 @@
 {{ end }}
 <meta name="description" content="{{ $description }}">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f8f8f6">
 <script>
   (function () {
-    var theme = localStorage.getItem("theme") || "{{ site.Params.defaultTheme | default "system" }}";
+    var storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem("theme");
+    } catch (error) {
+      storedTheme = null;
+    }
+    var theme = storedTheme || "{{ site.Params.defaultTheme | default "system" }}";
     var dark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.classList.toggle("dark", dark);
-    document.documentElement.dataset.theme = theme;
+    var root = document.documentElement;
+    root.classList.toggle("dark", dark);
+    root.dataset.theme = theme;
+
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.setAttribute("content", dark ? "#121212" : "#f8f8f6");
   })();
 </script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="{{ "fonts/lxgw-wenkai/local.css" | relURL }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css" integrity="sha384-usAwS4GuP3EymPRjfL7yc7ZFZZl45NeR7Lbl/krLMVINoRHVKYgQG/6WTGXNyNOH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css" integrity="sha384-wvyC9BCHtJEZ8WmLkhXV9p66P71K/TY9GjKAotcuTWdws6Bxynnh1tNPyc5+N9yA" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
 {{ with .OutputFormats.Get "RSS" }}
   <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">
